@@ -1,12 +1,13 @@
 # Ex02 Django ORM Web Application
-## Date: 
+## Date:19.03.24
 
 ## AIM
 To develop a Django application to store and retrieve data from a Book database using Object Relational Mapping(ORM).
 
 ## Entity Relationship Diagram
+<img width="576" alt="screen shot paint" src="https://github.com/Suji-90/orm/assets/150884148/592024c9-b3a4-49c3-8ae1-ffcabb41f19c">
 
-Include your ER diagram here
+
 
 ## DESIGN STEPS
 
@@ -23,34 +24,32 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 ## PROGRAM
-
 ```
-File: Models.py
+admin.py
+
+from django.contrib import admin
+from .models import Book_DB,Book_DBAdmin
+admin.site.register(Book_DB,Book_DBAdmin)
+
+models.py
 
 from django.db import models
 from django.contrib import admin
+class Book_DB(models.Model):
+      sno=models.IntegerField(primary_key="sno")
+      name=models.CharField(max_length=50)
+      author=models.CharField(max_length=70)
+      price=models.IntegerField()
+      publisher=models.CharField(max_length=60)
 
-class Employee (models.Model):
-    unique_number=models.CharField(max_length=20,primary_key=True)
-    name=models.CharField(max_length=100)
-    age=models.IntegerField()
-    email=models.EmailField()
-    job=models.CharField(max_length=100)
-
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('unique_number','name','age','email','job')
-
-File: Admin.py
-
-from django.contrib import admin
-from .models import Employee,EmployeeAdmin
-
-admin.site.register(Employee,EmployeeAdmin)
+class Book_DBAdmin(admin.ModelAdmin):
+    list_display=("sno","name","author","price","publisher")
 ```
+
 
 ## OUTPUT
 
-![djOutput](https://user-images.githubusercontent.com/119559366/232080061-2cb73937-ed19-4faa-97c9-7d78dcf55dec.png)
+<img width="956" alt="EXorm-1" src="https://github.com/Suji-90/orm/assets/150884148/a52ed6b7-c5ee-4148-abc6-e156e92126a9">
 
 
 ## RESULT
